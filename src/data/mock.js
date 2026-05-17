@@ -1,6 +1,4 @@
-import type { Building, ExceptionCase, ParkingSlot, PricingRule, Session } from '../types'
-
-export const building: Building = {
+export const building = {
   id: 'b1',
   name: 'Tòa SkyPark – Bãi xe B1',
   address: '123 Nguyễn Huệ, Q.1, TP.HCM',
@@ -9,14 +7,14 @@ export const building: Building = {
   openHours: '06:00 – 23:00',
 }
 
-export const vehicleLabels: Record<string, string> = {
+export const vehicleLabels = {
   oto: 'Ô tô',
   xe_may: 'Xe máy',
   xe_dap: 'Xe đạp',
   xe_tai: 'Xe tải',
 }
 
-export const slotStatusLabels: Record<string, string> = {
+export const slotStatusLabels = {
   empty: 'Còn trống',
   occupied: 'Đang sử dụng',
   reserved: 'Đã đặt trước',
@@ -24,7 +22,7 @@ export const slotStatusLabels: Record<string, string> = {
   locked: 'Tạm khóa',
 }
 
-export const slotStatusColors: Record<string, string> = {
+export const slotStatusColors = {
   empty: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
   occupied: 'bg-sky-500/20 text-sky-300 border-sky-500/40',
   reserved: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
@@ -39,16 +37,16 @@ export const floorsByVehicle = [
   { floor: 'B4', types: ['xe_tai'], slots: 50, free: 12 },
 ]
 
-export const pricingRules: PricingRule[] = [
+export const pricingRules = [
   { id: 'p1', vehicleType: 'oto', name: 'Ô tô tiêu chuẩn', hourly: 15000, daily: 120000, overnight: 80000, peakMultiplier: 1.5 },
   { id: 'p2', vehicleType: 'xe_may', name: 'Xe máy', hourly: 5000, daily: 35000, overnight: 25000, peakMultiplier: 1.3 },
   { id: 'p3', vehicleType: 'xe_dap', name: 'Xe đạp', hourly: 2000, daily: 12000, overnight: 8000, peakMultiplier: 1.2 },
   { id: 'p4', vehicleType: 'xe_tai', name: 'Xe tải', hourly: 25000, daily: 200000, overnight: 150000, peakMultiplier: 1.8 },
 ]
 
-function genSlots(): ParkingSlot[] {
-  const statuses = ['empty', 'occupied', 'reserved', 'maintenance', 'locked'] as const
-  const slots: ParkingSlot[] = []
+function genSlots() {
+  const statuses = ['empty', 'occupied', 'reserved', 'maintenance', 'locked']
+  const slots = []
   let n = 1
   for (const f of [1, 2, 3, 4]) {
     for (let i = 0; i < 24; i++) {
@@ -70,13 +68,13 @@ function genSlots(): ParkingSlot[] {
 
 export const slots = genSlots()
 
-export const activeSessions: Session[] = [
+export const activeSessions = [
   { id: 'ses1', plate: '51A-12345', vehicleType: 'oto', checkIn: '08:32', slot: 'B2-14', gate: 'Cổng A', estimatedFee: 45000, status: 'active' },
   { id: 'ses2', plate: '59H2-9988', vehicleType: 'xe_may', checkIn: '09:15', slot: 'B1-07', gate: 'Cổng B', estimatedFee: 15000, status: 'active' },
   { id: 'ses3', plate: '30K-7777', vehicleType: 'oto', checkIn: '06:00', slot: 'B3-02', gate: 'Cổng A', estimatedFee: 120000, status: 'overdue' },
 ]
 
-export const exceptions: ExceptionCase[] = [
+export const exceptions = [
   { id: 'e1', type: 'Mất vé', plate: '51G-8899', description: 'Khách không tìm thấy thẻ gửi', severity: 'high', time: '10:22' },
   { id: 'e2', type: 'Sai biển số', plate: '51A-0001', description: 'Biển nhập khác biển trên thẻ', severity: 'medium', time: '09:48' },
   { id: 'e3', type: 'Quá giờ', plate: '30K-7777', description: 'Gửi quá 8h, chưa thanh toán', severity: 'high', time: '09:30' },
