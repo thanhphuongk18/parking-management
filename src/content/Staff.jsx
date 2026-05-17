@@ -2,16 +2,14 @@ import { ArrowDownLeft, ArrowUpRight, AlertTriangle, QrCode, Search } from 'luci
 import { activeSessions, building, vehicleLabels } from '../data/mock'
 import { Btn, Card, Input, PageHeader, Select, Table } from '../components/ui'
 
-export type StaffView = 'checkin' | 'session' | 'checkout' | 'exceptions'
-
 export const staffMenus = [
-  { id: 'checkin' as const, label: 'Xe vào bãi', icon: ArrowDownLeft },
-  { id: 'session' as const, label: 'Tạo lượt gửi', icon: QrCode },
-  { id: 'checkout' as const, label: 'Xe ra bãi', icon: ArrowUpRight },
-  { id: 'exceptions' as const, label: 'Ngoại lệ', icon: AlertTriangle },
+  { id: 'checkin', label: 'Xe vào bãi', icon: ArrowDownLeft },
+  { id: 'session', label: 'Tạo lượt gửi', icon: QrCode },
+  { id: 'checkout', label: 'Xe ra bãi', icon: ArrowUpRight },
+  { id: 'exceptions', label: 'Ngoại lệ', icon: AlertTriangle },
 ]
 
-export function StaffContent({ view }: { view: StaffView }) {
+export function StaffContent({ view }) {
   if (view === 'checkin') {
     return (
       <>

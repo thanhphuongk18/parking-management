@@ -10,25 +10,22 @@ import {
   Users,
   X,
 } from 'lucide-react'
-import type { Role } from './types'
 import { building } from './data/mock'
-import { AdminContent, adminMenus, type AdminView } from './content/Admin'
+import { AdminContent, adminMenus } from './content/Admin'
 import { ManagerContent, managerMenus } from './content/Manager'
-import { StaffContent, staffMenus, type StaffView } from './content/Staff'
-import { UserContent, userMenus, type UserView } from './content/User'
+import { StaffContent, staffMenus } from './content/Staff'
+import { UserContent, userMenus } from './content/User'
 
-const roles: { id: Role; label: string; desc: string; icon: typeof Shield }[] = [
+const roles = [
   { id: 'manager', label: 'Parking Manager', desc: 'Vận hành & báo cáo', icon: LayoutDashboard },
   { id: 'staff', label: 'Parking Staff', desc: 'Xe vào/ra & ngoại lệ', icon: Users },
   { id: 'user', label: 'Driver / User', desc: 'Gửi xe & thanh toán', icon: Car },
   { id: 'admin', label: 'System Admin', desc: 'Tài khoản & cấu hình', icon: Shield },
 ]
 
-type MenuId = string
-
 function App() {
-  const [role, setRole] = useState<Role>('manager')
-  const [menuId, setMenuId] = useState<MenuId>('dashboard')
+  const [role, setRole] = useState('manager')
+  const [menuId, setMenuId] = useState('dashboard')
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   const menus = useMemo(() => {
@@ -42,19 +39,19 @@ function App() {
 
   const activeMenu = menus.some((m) => m.id === menuId) ? menuId : defaultMenu
 
-  const switchRole = (r: Role) => {
+  const switchRole = (r) => {
     setRole(r)
     setMenuId(r === 'manager' ? 'dashboard' : r === 'staff' ? 'checkin' : r === 'user' ? 'info' : 'accounts')
   }
 
   const content = () => {
-    if (role === 'manager') return <ManagerContent view={activeMenu as (typeof managerMenus)[0]['id']} />
-    if (role === 'staff') return <StaffContent view={activeMenu as StaffView} />
-    if (role === 'user') return <UserContent view={activeMenu as UserView} />
-    return <AdminContent view={activeMenu as AdminView} />
+    if (role === 'manager') return <ManagerContent view={activeMenu} />
+    if (role === 'staff') return <StaffContent view={activeMenu} />
+    if (role === 'user') return <UserContent view={activeMenu} />
+    return <AdminContent view={activeMenu} />
   }
 
-  const roleMeta = roles.find((r) => r.id === role)!
+  const roleMeta = roles.find((r) => r.id === role)
 
   return (
     <div className="flex h-full min-h-screen bg-[#0b1220]">
@@ -157,6 +154,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App

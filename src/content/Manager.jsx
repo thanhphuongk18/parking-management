@@ -24,18 +24,7 @@ import {
 } from '../data/mock'
 import { Badge, Btn, Card, Input, PageHeader, Select, StatCard, Table } from '../components/ui'
 
-type ManagerView =
-  | 'dashboard'
-  | 'building'
-  | 'vehicles'
-  | 'floors'
-  | 'slots'
-  | 'pricing'
-  | 'reports'
-  | 'advanced'
-  | 'ai'
-
-export const managerMenus: { id: ManagerView; label: string; icon: typeof Building2 }[] = [
+export const managerMenus = [
   { id: 'dashboard', label: 'Tổng quan', icon: Building2 },
   { id: 'building', label: 'Tòa nhà gửi xe', icon: Building2 },
   { id: 'vehicles', label: 'Loại phương tiện', icon: MapPin },
@@ -47,7 +36,7 @@ export const managerMenus: { id: ManagerView; label: string; icon: typeof Buildi
   { id: 'ai', label: 'AI tối ưu', icon: Brain },
 ]
 
-export function ManagerContent({ view }: { view: ManagerView }) {
+export function ManagerContent({ view }) {
   const empty = slots.filter((s) => s.status === 'empty').length
   const occupied = slots.filter((s) => s.status === 'occupied').length
 

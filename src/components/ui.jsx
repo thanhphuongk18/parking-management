@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react'
-
-export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Card({ children, className = '' }) {
   return (
     <div className={`rounded-xl border border-slate-700/60 bg-slate-800/50 p-4 backdrop-blur-sm ${className}`}>
       {children}
@@ -8,7 +6,7 @@ export function Card({ children, className = '' }: { children: ReactNode; classN
   )
 }
 
-export function PageHeader({ title, subtitle, action }: { title: string; subtitle?: string; action?: ReactNode }) {
+export function PageHeader({ title, subtitle, action }) {
   return (
     <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
       <div>
@@ -20,17 +18,7 @@ export function PageHeader({ title, subtitle, action }: { title: string; subtitl
   )
 }
 
-export function StatCard({
-  label,
-  value,
-  sub,
-  trend,
-}: {
-  label: string
-  value: string | number
-  sub?: string
-  trend?: 'up' | 'down'
-}) {
+export function StatCard({ label, value, sub, trend }) {
   return (
     <Card>
       <p className="text-xs font-medium uppercase tracking-wide text-slate-400">{label}</p>
@@ -44,7 +32,7 @@ export function StatCard({
   )
 }
 
-export function Badge({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Badge({ children, className = '' }) {
   return (
     <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${className}`}>
       {children}
@@ -52,17 +40,7 @@ export function Badge({ children, className = '' }: { children: ReactNode; class
   )
 }
 
-export function Btn({
-  children,
-  variant = 'primary',
-  onClick,
-  className = '',
-}: {
-  children: ReactNode
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
-  onClick?: () => void
-  className?: string
-}) {
+export function Btn({ children, variant = 'primary', onClick, className = '' }) {
   const styles = {
     primary: 'bg-cyan-600 hover:bg-cyan-500 text-white',
     secondary: 'bg-slate-700 hover:bg-slate-600 text-white',
@@ -80,7 +58,7 @@ export function Btn({
   )
 }
 
-export function Input({ label, placeholder, className = '' }: { label?: string; placeholder?: string; className?: string }) {
+export function Input({ label, placeholder, className = '' }) {
   return (
     <label className={`block ${className}`}>
       {label && <span className="mb-1 block text-xs text-slate-400">{label}</span>}
@@ -93,7 +71,7 @@ export function Input({ label, placeholder, className = '' }: { label?: string; 
   )
 }
 
-export function Select({ label, options }: { label?: string; options: string[] }) {
+export function Select({ label, options }) {
   return (
     <label className="block">
       {label && <span className="mb-1 block text-xs text-slate-400">{label}</span>}
@@ -108,7 +86,7 @@ export function Select({ label, options }: { label?: string; options: string[] }
   )
 }
 
-export function Table({ headers, rows }: { headers: string[]; rows: (string | ReactNode)[][] }) {
+export function Table({ headers, rows }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-700/60">
       <table className="w-full min-w-[480px] text-left text-sm">

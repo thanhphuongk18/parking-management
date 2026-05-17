@@ -1,12 +1,10 @@
 import { KeyRound, Settings, Users } from 'lucide-react'
 import { Badge, Btn, Card, Input, PageHeader, Select, Table } from '../components/ui'
 
-export type AdminView = 'accounts' | 'roles' | 'config'
-
 export const adminMenus = [
-  { id: 'accounts' as const, label: 'Tài khoản', icon: Users },
-  { id: 'roles' as const, label: 'Phân quyền', icon: KeyRound },
-  { id: 'config' as const, label: 'Cấu hình hệ thống', icon: Settings },
+  { id: 'accounts', label: 'Tài khoản', icon: Users },
+  { id: 'roles', label: 'Phân quyền', icon: KeyRound },
+  { id: 'config', label: 'Cấu hình hệ thống', icon: Settings },
 ]
 
 const users = [
@@ -25,7 +23,7 @@ const permissions = [
   { module: 'AI tối ưu', manager: true, staff: false, user: false, admin: true },
 ]
 
-export function AdminContent({ view }: { view: AdminView }) {
+export function AdminContent({ view }) {
   if (view === 'accounts') {
     return (
       <>

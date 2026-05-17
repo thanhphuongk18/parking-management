@@ -2,18 +2,16 @@ import { Calendar, Car, CreditCard, MapPinned, MessageSquare, Ticket } from 'luc
 import { activeSessions, building, floorsByVehicle, pricingRules, vehicleLabels } from '../data/mock'
 import { Badge, Btn, Card, Input, PageHeader, Select, StatCard } from '../components/ui'
 
-export type UserView = 'info' | 'park' | 'reserve' | 'track' | 'pay' | 'feedback'
-
 export const userMenus = [
-  { id: 'info' as const, label: 'Thông tin bãi', icon: MapPinned },
-  { id: 'park' as const, label: 'Gửi xe', icon: Car },
-  { id: 'reserve' as const, label: 'Đặt chỗ trước', icon: Calendar },
-  { id: 'track' as const, label: 'Theo dõi lượt', icon: Ticket },
-  { id: 'pay' as const, label: 'Thanh toán', icon: CreditCard },
-  { id: 'feedback' as const, label: 'Phản hồi', icon: MessageSquare },
+  { id: 'info', label: 'Thông tin bãi', icon: MapPinned },
+  { id: 'park', label: 'Gửi xe', icon: Car },
+  { id: 'reserve', label: 'Đặt chỗ trước', icon: Calendar },
+  { id: 'track', label: 'Theo dõi lượt', icon: Ticket },
+  { id: 'pay', label: 'Thanh toán', icon: CreditCard },
+  { id: 'feedback', label: 'Phản hồi', icon: MessageSquare },
 ]
 
-export function UserContent({ view }: { view: UserView }) {
+export function UserContent({ view }) {
   const session = activeSessions[1]
 
   if (view === 'info') {
